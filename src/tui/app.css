@@ -1,0 +1,35 @@
+#dialog {
+    grid-size: 2;
+    grid-gutter: 1 2;
+    margin: 1 2;
+}
+
+#question {
+    column-span: 2;
+    content-align: center bottom;
+    width: 100%;
+    height: 100%;
+}
+
+#screen-container {
+    layout: vertical;
+}
+
+#board-container {
+    height: 50%;
+    background: $primary-background;
+    padding-bottom: 2;
+}
+
+.bg-dark {
+    background: $background-lighten-3;
+}
+
+.bg-blue {
+    background: $primary-lighten-2;
+}
+
+.bg-green {
+    background: $success-lighten-1;
+}
+

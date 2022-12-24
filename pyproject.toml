@@ -1,0 +1,66 @@
+[tool.poetry]
+name = "cards"
+version = "0.1.0"
+description = ""
+authors = ["Brown, Kip R <Kip.Brown@charter.com>"]
+readme = "README.md"
+packages = [{include = "api", from = "src"}, {include = "cli", from = "src"}]
+
+[tool.poetry.scripts]
+cards = "cli.main:app"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+httpx = "^0.23.1"
+fastapi = "^0.88.0"
+uvicorn = "^0.20.0"
+typer = "^0.7.0"
+sqlmodel = "^0.0.8"
+loguru = "^0.6.0"
+rich = "^12.6.0"
+ormar = "^0.12.0"
+pendulum = "^2.1.2"
+aiosqlite = "^0.17.0"
+termcharts = "^1.1.2"
+rumps = "^0.4.0"
+textual = {extras = ["dev"], version = "^0.7.0"}
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.2.0"
+faker = "^15.3.4"
+pytest-cov = "^4.0.0"
+pytest-sugar = "^0.9.6"
+pytest-randomly = "^3.12.0"
+ipython = "^8.7.0"
+pytest-html = "^3.2.0"
+asgi-lifespan = "^2.0.0"
+pytest-anyio = "^0.0.0"
+trio = "^0.22.0"
+pytest-mock = "^3.10.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = "api/tests"
+pythonpath = "src"
+addopts = [
+    "--tb=no",
+    "-v",
+    "-ra",
+    "--strict-markers",
+    "--strict-config",
+    "--html=report.html",
+    "--self-contained-html"
+    #    "-n=auto"
+]
+markers = [
+    "smoke: subset of tests",
+    "unit: A unit test",
+    "exception: check for expected exceptions",
+    "regression: test for past bugs",
+    "cli: cli tests",
+    "num_cards: number of cards to prefill the cards_db fixture"
+]
